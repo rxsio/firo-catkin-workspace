@@ -1,0 +1,6 @@
+# Ignore everything in this directory except gitignore
+# We don't want to commit ROS packages to  directory,
+# but it's more convienient to have src folder immediately
+# after cloning the repository
+*
+!.gitignore

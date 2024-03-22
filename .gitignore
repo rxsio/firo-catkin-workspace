@@ -1,0 +1,31 @@
+# We want to ignore basically everything except already tracked files.
+# The assumption is that the user will have a dirty workspace
+# and we want to avoid committing anything by mistake to remote 
+# repository with the workspace template.
+# Besides already tracked files, other github specific files are
+# already excluded from the ignore list
+*
+!.catkin_tools
+!.clang-format
+!.clang-tidy
+!.cmake-format.yaml
+!.github
+!.gitignore
+!.vscode
+!ACKNOWLEDGMENTS*
+!AUTHORS*
+!CHANGELOG*
+!CITATION*
+!CODE_OF_CONDUCT*
+!CODEOWNERS
+!compile_commands.py
+!CONTRIBUTING*
+!CONTRIBUTORS*
+!docs
+!ISSUE_TEMPLATE
+!LICENSE*
+!PULL_REQUEST_TEMPLATE
+!README*
+!SECURITY*
+!src
+!SUPPORT*

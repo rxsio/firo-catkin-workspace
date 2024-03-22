@@ -1,0 +1,77 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "catkin",
+			"args": [
+				"build",
+				"--cmake-args",
+                "-DCMAKE_EXPORT_COMPILE_COMMANDS=1",
+				"-DCMAKE_CXX_COMPILER_LAUNCHER=ccache",
+				"-DCMAKE_CC_COMPILER_LAUNCHER=ccache"
+			],
+			"problemMatcher": [
+				"$catkin-gcc"
+			],
+			"group": {
+				"kind": "build"
+			},
+			"label": "catkin: build"
+		},
+		{ 
+			"type": "shell",
+			"command": "${command:python.interpreterPath}",
+			"args": [
+				"${workspaceFolder}/compile_commands.py",
+				"${workspaceFolder}/build"
+			],
+			"problemMatcher": [
+				"$catkin-gcc"
+			],
+			"group": {
+				"kind": "build"
+			},
+			"label": "catkin: export compile commands"
+		},
+		{
+			"type": "shell",
+			"command": "catkin_lint",
+			"args": [
+				"-W2",
+				"--output=explain",
+				"--color=always",
+				"--skip-path",
+				"src/external",
+				"src/"
+			],
+			"problemMatcher": [
+				"$catkin-gcc"
+			],
+			"label": "catkin: lint"
+		},
+		{
+			"label": "catkin: build and export compile commands",
+			"command":"${command:clangd.restart}",
+			"dependsOrder": "sequence",
+			"dependsOn": ["catkin: build", "catkin: export compile commands"],
+			"group": {
+				"kind": "build"
+			},
+			"problemMatcher": [
+				"$catkin-gcc"
+			]
+		},
+		{
+			"label": "catkin: build and lint",
+			"dependsOrder": "sequence",
+			"dependsOn": ["catkin: build and export compile commands", "catkin: lint"],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"problemMatcher": [
+				"$catkin-gcc"
+			]
+		}			  
+	]
+}
