@@ -27,5 +27,6 @@
     },
     "[cpp]": {
         "editor.defaultFormatter": "xaver.clang-format"
-    }
+    },
+    "git.repositoryScanMaxDepth": 2
 }
